@@ -1,1 +1,0 @@
-#define PM_NUMBER_CHANNELS 8

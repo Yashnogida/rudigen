@@ -15,7 +15,7 @@ int gui_init()
     SDL_Init(SDL_INIT_VIDEO);
   
     //Create Window and Renderer
-    window = SDL_CreateWindow("PACMAN ET Diagnostic", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_W , WINDOW_H, 0);
+    window = SDL_CreateWindow("PACMAN ET Diagnostic", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_W , WINDOW_H, SDL_WINDOW_BORDERLESS);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED );
     screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, 0, 1, 1);
 
@@ -23,12 +23,12 @@ int gui_init()
     SDL_RenderClear(renderer);
 
     /* Initialize Font Stuff */
-    // TTF_Init();
+    TTF_Init();
     font_srf = load_font("fonts/cw7x13.srf");
 
-    // font = TTF_OpenFont("fonts/courier_prime/CourierPrime-Regular.ttf", 14);
-    // TTF_SizeText(font, "a", &font_w, &font_h);
-    // font_big = TTF_OpenFont("fonts/courier_prime/CourierPrime-Regular.ttf", 32);
+    font = TTF_OpenFont("fonts/courier_prime/CourierPrime-Regular.ttf", 14);
+    TTF_SizeText(font, "a", &font_w, &font_h);
+    font_big = TTF_OpenFont("fonts/courier_prime/CourierPrime-Regular.ttf", 32);
     
     font_color_normal.r = 255;
     font_color_normal.g = 255;
@@ -107,11 +107,11 @@ int gui_update()
     {
         wx = &widget_queue[i];
 
-        wx->fx.fx_update(&wx->data);              // printf("-1\n");
-        wx->fx.fx_draw(&wx->data);                // printf("-2\n");
-        wx->fx.fx_mouse_motion(&wx->data);        // printf("-3\n");
-        wx->fx.fx_mouse_button_down(&wx->data);   // printf("-4\n");
-        wx->fx.fx_keypressed(&wx->data);          // printf("-5\n");
+        wx->fx.fx_update(&wx->data);
+        wx->fx.fx_draw(&wx->data);
+        wx->fx.fx_mouse_motion(&wx->data);
+        wx->fx.fx_mouse_button_down(&wx->data);
+        wx->fx.fx_keypressed(&wx->data);
     }
     
     SDL_RenderPresent(renderer);
@@ -132,7 +132,6 @@ void gui_write_text(int x, int y, int *w, int *h, char *text, int color)
     text_color.r = red_mask(color);
     text_color.g = green_mask(color);
     text_color.b = blue_mask(color);
-    
 
 
     /*  THIS LINE CAUSES SEGFAULT  */

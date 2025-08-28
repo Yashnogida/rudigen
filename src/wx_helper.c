@@ -12,7 +12,9 @@ void wx_draw_frame(widget_info *wx, int border_color, int fill_color)
     bg_rect.w = wx->rect.w + 2;
     bg_rect.h = wx->rect.h + 2;
     
-    if (wx->selected | wx_check_bounds(wx)) border_color = COLOR_SECONDARY;
+    if (wx->selected | wx_check_bounds(wx)) 
+        border_color = COLOR_RED;
+
     SDL_SetRenderDrawColor(renderer, (border_color>>16) & 0xff, (border_color>>8) & 0xff, border_color & 0xff, SDL_ALPHA_OPAQUE);
     SDL_RenderFillRect(renderer, &bg_rect);
     SDL_SetRenderDrawColor(renderer, (fill_color>>16) & 0xff, (fill_color>>8) & 0xff, fill_color & 0xff, SDL_ALPHA_OPAQUE);
@@ -51,9 +53,9 @@ void wx_fx_test(void)
 
 }
 
-void wx_write_text(widget_info *wx_info, int x, int y, char* text)
+void wx_write_text(widget_info *wx_info, int x, int y, char* text, int color)
 {
-    gui_write_text(wx_info->rect.x + x, wx_info->rect.y + y, NULL, NULL,  text, 0xffffff);
+    gui_write_text(wx_info->rect.x + x, wx_info->rect.y + y, NULL, NULL, text, color);
 }
 
 
@@ -70,3 +72,7 @@ int wx_fx_none_int(widget_info *wx_info)
     
 }
 
+int text_center_vertical(widget_info *parent_widget, char *text)
+{
+
+}

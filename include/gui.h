@@ -4,11 +4,11 @@
 
 
 // Colors
-#define COLOR_BACKGROUND   0x02040F
-#define COLOR_FOREGROUND   0x002642
-#define COLOR_PRIMARY      0xE5DADA
-#define COLOR_SECONDARY    0xE59500
-#define COLOR_TERTIARY     0x840032
+#define COLOR_BACKGROUND   0x000000
+#define COLOR_FOREGROUND   0xB9BAA3
+#define COLOR_PRIMARY      0xD6D5C9
+#define COLOR_SECONDARY    0xA22C29
+#define COLOR_TERTIARY     0x586F7C
 
 #define COLOR_WHITE        0xFFFFFF
 #define COLOR_BLACK        0x000000
@@ -64,7 +64,7 @@ typedef struct widget_info
 {
     SDL_Rect rect;
     int selected;
-    void **heap; 
+    void *heap; 
 } widget_info;
 
 
@@ -90,6 +90,7 @@ typedef struct widget_functions
 
 
 
+
 typedef struct widget
 {
     widget_functions fx;
@@ -103,46 +104,24 @@ widget widget_queue[100];
 int widget_queue_size;
 
 
-// Instantiations of widgets (for global access)
-widget main_terminal;
 
-// Scope Widget
-widget wx_scope_create(int x, int y);
+// Score Window
+widget wx_score_window_create(int x, int y);
 
-// Value Box 
-widget wx_value_box_create(int x, int y, void (*func)(void), int num_digits);
+// Sequencer Window
+widget wx_sequencer_create(int x, int y, char *drum_name);
 
-// Scroll Box
-widget wx_scroll_box_create(int x, int y, int *val, int num_digits);
-
-// Soft Commands Window
-widget wx_soft_command_create(int x, int y);
-
-//Terminal
-widget wx_terminal_create(int x, int y);
-void wx_terminal_printf(widget_info *wx_info);
-
-// Button
-widget wx_button_create(int x, int y, char *text);
 
 // Helper Functions
 void wx_draw_frame(widget_info *wx, int border_color, int fill_color);
 int wx_check_bounds(widget_info *wx_info);
 void wx_fx_mouse_button_down_select(widget_info *data);
-void wx_write_text(widget_info *wx_info, int x, int y, char* text);
+void wx_write_text(widget_info *wx_info, int x, int y, char* text, int color);
 
-// Power Monitor
-widget wx_create_power_mon(int x, int y);
-
-
-// IFP Monitor
-widget wx_create_ifp_mon(int x, int y);
 
 void wx_fx_test(void);
 void wx_fx_none(widget_info *wx_info);
 int wx_fx_none_int(widget_info *wx_info);
-
-// Font
 
 
 typedef struct

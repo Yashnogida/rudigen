@@ -19,9 +19,6 @@ CC = gcc
 INCLUDE = -Iinclude/SDL2 \
           -Iinclude/SDL_ttf \
 		  -Iinclude \
-		#   -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um" \
-		#   -I"C:/Program Files (x86)/Windows Kits10/Include/10.0.26100.0/shared" \
-		#   -I"C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared"
 
 CFLAGS += -ggdb $(INCLUDE)
 
@@ -30,9 +27,8 @@ SDL_LIB = -L./lib/SDL2 \
 		  -lSDL2 \
 		  -L./lib/SDL_ttf \
 		  -lSDL2_ttf 
-        #   -l"C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64/dwmapi"
 
-LIBS += -lmingw32 -lws2_32 $(SDL_LIB) ./lib/plxapi.lib ./lib/sicl32.lib
+LIBS += -lmingw32 -lws2_32 $(SDL_LIB) 
 
 srcs := $(wildcard $(SRC_DIR)/*.c)           # Get List of all C files in source directory
 objects := $(notdir $(srcs:%.c=%.o))         # Remove source directory prefix
