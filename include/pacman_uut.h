@@ -1,0 +1,1 @@
+void pacman_uut_get_adc_trace(int *buffer);

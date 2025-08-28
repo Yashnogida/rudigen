@@ -1,0 +1,50 @@
+
+
+Bugs to Fix:
+
+- Fix terminal issue where deleting words stops working after maximum buffer limit is reached
+
+- Allow terminal to capitalize letters (SHIFT and CAPS LOCKS)
+
+
+____________________________________________________
+
+Things to implement:
+
+
+
+- Frequency Generator Adjust 
+    - Mouse scoll wheel adjust
+    - Double click and type 
+
+- Real Time optical power meter mode
+    - Mouse scoll wheel adjust
+    - Double click and type 
+
+
+____________________________________________________
+
+
+Soft Commands:
+    - Get attenuator curves (popout window with a 2d GNU plot with all attenuator curves)
+    - Sweep AOM curves (3d GNU plot for characterizing AOMs)
+    - Calibrate attenuators
+
+Data to from an ethernet transaction when in Dev Mode:
+
+    ET: 
+    - 8 channels of OPM power 
+    - 8 Delay bars 
+    
+    UUT
+    - IFP values 
+    - Trace Data
+    - Axis [Phase] [Phase Noise]
+    
+
+
+
+____________________________________________________
+
+Things widgets have in common 
+    - Is it Locked (selected / highlighted until mouse clicks out) 
